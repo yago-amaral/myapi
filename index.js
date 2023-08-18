@@ -7,7 +7,7 @@ import homeRoutes from "./src/routes/home.js";
 import postsRoutes from "./src/routes/posts.js";
 
 const app = express();
-const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mycluster.ezystoa.mongodb.net/blog?retryWrites=true&w=majority`;
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mycluster.ezystoa.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 app.set("view engine", "ejs");
 app.set("views", "./src/views");
