@@ -21,4 +21,21 @@ export async function getSinglePost(req, res) {
 
 }
 
-export async function createPost(req, res) {}
+export async function createPost(req, res) {
+    try {
+        const { title, content } = req.body;
+        const post = { title, content };
+
+        await Post.create(post);
+
+        res.status(200).json({
+            msg: "Post criado com sucesso",
+            post
+        });
+    } catch ({ message }) {
+        res.status(400).json({
+            error: "Não foi possível criar o post",
+            message
+        });
+    }
+}
