@@ -12,10 +12,10 @@ export async function getSinglePost(req, res) {
     try {
         const post = await Post.findById(id);
         res.json(post);
-    } catch (err) {
+    } catch ({ message }) {
         res.status(404).json({
             error: "Recurso não encontrado",
-            message: err.message
+            message
         });
     }
 
