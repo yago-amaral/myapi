@@ -11,6 +11,9 @@ export async function getSinglePost(req, res) {
     
     try {
         const post = await Post.findById(id);
+
+        if (!post) throw new Error("Este post foi deletado");
+
         res.json(post);
     } catch ({ message }) {
         res.status(404).json({
