@@ -9,4 +9,6 @@ router.get("/:id", Post.getSinglePost);
 
 router.post("/", Post.createPost);
 
+router.delete("/:id", Post.deletePost);
+
 export default router;

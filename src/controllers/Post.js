@@ -39,3 +39,23 @@ export async function createPost(req, res) {
         });
     }
 }
+
+export async function deletePost(req, res) {
+    const { id } = req.params;
+
+    try {
+        const post = await Post.findByIdAndDelete(id);
+
+        if (!post) throw new Error("Post não encontrado");
+
+        res.status(200).json({
+            msg: "Post deletado com sucesso",
+            post
+        });
+    } catch ({ message }) {
+        res.status(400).json({
+            error: "Não foi possível deletar o post",
+            message
+        });
+    }
+}
